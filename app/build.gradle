@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Version.compileSdk
+    defaultConfig {
+        applicationId "io.navendra.classic"
+        renderscriptTargetApi 11
+        renderscriptSupportModeEnabled true
+        vectorDrawables {
+            useSupportLibrary true
+        }
+        minSdkVersion Version.minSdk
+        targetSdkVersion Version.targetSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Deps.kotlin_stdLib
+    implementation Deps.app_compat
+    implementation Deps.app_compat_legacy
+    implementation Deps.constraint_layout
+    implementation Deps.work_manager
+    implementation Deps.glide
+
+
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
